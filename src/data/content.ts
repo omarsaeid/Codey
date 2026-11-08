@@ -1,3 +1,5 @@
+import { contactEmail, whatsappDisplayNumber, whatsappNumber } from '../config/site';
+
 export interface Testimonial { quote: string; name: string; role: string; stars: number; face: [string, string, string] }
 
 export const testimonials: Testimonial[] = [
@@ -14,8 +16,8 @@ export const faqs = [
 ];
 
 export const contactInfo = [
-  { icon: '✉️', label: 'Email', value: 'hello@codey.dev', href: 'mailto:hello@codey.dev' },
-  { icon: '📞', label: 'Phone / WhatsApp', value: '+20 100 000 0000', href: 'tel:+201000000000' },
+  { icon: '✉️', label: 'Email', value: contactEmail, href: `mailto:${contactEmail}` },
+  { icon: '📞', label: 'Phone / WhatsApp', value: whatsappDisplayNumber, href: `https://wa.me/${whatsappNumber}` },
   { icon: '📍', label: 'Location', value: 'Cairo, Egypt (GMT+2)' },
   { icon: '⏱', label: 'Response time', value: 'Within 24 hours' },
 ];

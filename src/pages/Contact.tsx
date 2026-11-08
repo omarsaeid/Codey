@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { useState, type FormEvent } from 'react';
 import PageHeader from '../components/PageHeader';
+import { createWhatsAppUrl } from '../config/site';
 import { contactBudgets, contactInfo, contactServices } from '../data/content';
 
 export default function Contact() {
@@ -16,9 +17,19 @@ export default function Contact() {
       next.has(s) ? next.delete(s) : next.add(s);
       return next;
     });
+  const buildWhatsAppMessage = () => [
+    'Hello Omar, I would like to discuss a project.',
+    `Name: ${form.name}`,
+    `Email: ${form.email}`,
+    `Services: ${chosen.size ? [...chosen].join(', ') : 'Not specified'}`,
+    `Budget: ${budget}`,
+    `Project details: ${form.message}`,
+  ].join('\n');
+
   const submit = (e: FormEvent) => {
     e.preventDefault();
-    setSent(true); // front-end only: nothing is sent anywhere
+    window.open(createWhatsAppUrl(buildWhatsAppMessage()), '_blank', 'noopener,noreferrer');
+    setSent(true);
   };
   const reset = () => {
     setForm({ name: '', email: '', message: '' });
@@ -71,16 +82,17 @@ export default function Contact() {
                     ))}
                   </div>
                   <div className="fld"><textarea id="fm" rows={4} placeholder=" " required value={form.message} onChange={set('message')} /><label htmlFor="fm">Tell me about your project</label></div>
-                  <button className="btn" type="submit">Send Message ➜</button>
+                  <button className="btn" type="submit">Continue to WhatsApp ➜</button>
                 </motion.form>
               ) : (
                 <motion.div key="ok" className="ok o" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
                   <svg viewBox="0 0 60 60" width="70" aria-hidden="true">
-                    <circle cx="30" cy="30" r="28" fill="none" stroke="#0b57d0" strokeWidth="3" />
-                    <path d="M18 31l9 9 16-18" fill="none" stroke="#f2692b" strokeWidth="4" strokeLinecap="round" />
+                    <circle cx="30" cy="30" r="28" fill="none" stroke="var(--blue)" strokeWidth="3" />
+                    <path d="M18 31l9 9 16-18" fill="none" stroke="var(--or)" strokeWidth="4" strokeLinecap="round" />
                   </svg>
-                  <h2 style={{ fontSize: 26, margin: '16px 0 8px' }}>Message Sent!</h2>
-                  <p>This is a design preview, so nothing was actually sent.</p>
+                  <h2 style={{ fontSize: 26, margin: '16px 0 8px' }}>WhatsApp Message Ready</h2>
+                  <p>WhatsApp should open in a new tab with your message ready. Review it there and press Send to complete your request.</p>
+                  <a className="btn s" style={{ marginTop: 8 }} href={createWhatsAppUrl(buildWhatsAppMessage())} target="_blank" rel="noopener noreferrer">Open WhatsApp</a>
                   <button className="btn s o" style={{ marginTop: 18 }} onClick={reset}>Send another</button>
                 </motion.div>
               )}

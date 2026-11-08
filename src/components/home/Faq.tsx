@@ -1,11 +1,11 @@
 import { useState, type FormEvent } from 'react';
 import { faqs } from '../../data/content';
 import Reveal from '../ui/Reveal';
+import { contactEmail } from '../../config/site';
 
 export default function Faq() {
   const [openIdx, setOpenIdx] = useState<Set<number>>(new Set());
   const [email, setEmail] = useState('');
-  const [sent, setSent] = useState(false);
 
   const toggle = (i: number) =>
     setOpenIdx((prev) => {
@@ -16,7 +16,9 @@ export default function Faq() {
 
   const submit = (e: FormEvent) => {
     e.preventDefault();
-    setSent(true);
+    const subject = encodeURIComponent('Question from the Codey portfolio');
+    const body = encodeURIComponent(`Please contact me at ${email}.`);
+    window.location.href = `mailto:${contactEmail}?subject=${subject}&body=${body}`;
   };
 
   return (
@@ -27,7 +29,7 @@ export default function Faq() {
         <form className="mail" onSubmit={submit}>
           <input type="email" required placeholder="Enter Your Email" value={email} onChange={(e) => setEmail(e.target.value)} aria-label="Email" />
           <button type="submit" className="btn s" style={{ borderRadius: '0 99px 99px 0', padding: '14px 22px' }}>
-            {sent ? 'Sent ✓' : 'Submit'}
+            Email Me
           </button>
         </form>
       </Reveal>

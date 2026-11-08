@@ -12,8 +12,15 @@ export default function ProjectCard({ project: p, index, onOpen }: Props) {
       style={{ animationDelay: `${index * 70}ms` }}
       role="button"
       tabIndex={0}
+      aria-label={`Open case study: ${p.title}`}
+      aria-haspopup="dialog"
       onClick={() => onOpen(p)}
-      onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onOpen(p)}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          onOpen(p);
+        }
+      }}
     >
       <div className="th2" style={projectVars(p)}></div>
       <div className="pb">

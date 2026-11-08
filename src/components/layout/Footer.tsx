@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import Logo from '../ui/Logo';
+import { contactEmail } from '../../config/site';
 
 const social = [
   { label: 'in', href: 'https://www.linkedin.com', name: 'LinkedIn' },
@@ -38,7 +39,7 @@ export default function Footer() {
         </div>
         <div>
           <h4>Contact Info</h4>
-          <a href="mailto:hello@codey.dev">hello@codey.dev</a>
+          <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
           <div className="sc">
             {social.map((s) => (
               <a key={s.label} href={s.href} target="_blank" rel="noreferrer" aria-label={s.name} style={{ margin: 0, opacity: 1 }}>

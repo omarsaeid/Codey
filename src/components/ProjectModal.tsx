@@ -39,7 +39,11 @@ export default function ProjectModal({ project: p, onClose }: Props) {
                   <div key={m.label}><b>{m.value}</b><span>{m.label}</span></div>
                 ))}
               </div>
-              <a className="btn s" href={p.url} target="_blank" rel="noreferrer">Live Preview ↗</a>
+              {p.url && !p.url.includes('example.com') ? (
+                <a className="btn s" href={p.url} target="_blank" rel="noopener noreferrer">Live Preview ↗</a>
+              ) : (
+                <p className="preview-note">Add a real project URL in src/data/projects.ts to enable the live preview.</p>
+              )}
             </div>
           </div>
         </motion.div>

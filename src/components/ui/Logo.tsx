@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-export default function Logo({ color = '#0b57d0' }: { color?: string }) {
+export default function Logo({ color = 'var(--blue)' }: { color?: string }) {
   return (
     <Link to="/" className="logo" aria-label="Codey. home">
       <svg viewBox="0 0 28 26" aria-hidden="true">
