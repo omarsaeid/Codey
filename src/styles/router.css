@@ -1,0 +1,6 @@
+/* Only what React Router anchors need so they render exactly like the prototype div/button elements. */
+a.logo { color: inherit; text-decoration: none; }
+/* Footer anchors inherit `footer a {opacity:.8; display:block; margin-bottom:10px}` — undo that for the logo and social badges so they match the prototype. */
+footer a.logo { opacity: 1; margin-bottom: 0; color: #fff; }
+footer a.logo:hover { transform: none; }
+footer .sc a:hover { transform: none; }
