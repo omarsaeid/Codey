@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import PageHeader from '../components/PageHeader';
 import StatsBar from '../components/home/StatsBar';
 import Face from '../components/ui/Face';
 import { skills, technologies, timeline } from '../data/about';
