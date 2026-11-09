@@ -29,7 +29,7 @@ export default function Footer() {
           <h4>{f.work}</h4>
           <Link to="/portfolio">{f.caseStudies}</Link>
           <Link to="/services">{f.pricing}</Link>
-          <a href="/resume.pdf" target="_blank" rel="noreferrer">{f.resume}</a>
+          <Link to="/about">{f.resume}</Link>
         </div>
         <div>
           <h4>{f.touch}</h4>

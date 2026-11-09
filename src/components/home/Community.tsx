@@ -1,3 +1,4 @@
+import SplitText from '../ui/SplitText';
 import type { CSSProperties } from 'react';
 import { Link } from 'react-router-dom';
 import { useLang } from '../../i18n/LanguageContext';
@@ -23,7 +24,7 @@ export default function Community() {
         <svg width="22" viewBox="0 0 22 18" stroke="#f2692b" strokeWidth="2" strokeLinecap="round" style={{ float: 'right', marginRight: 40 }} aria-hidden="true">
           <path d="M4 14l5-8M12 14l1-10M17 12l4-6" />
         </svg>
-        <h2>{c.title}</h2>
+        <SplitText>{c.title}</SplitText>
         <p>{c.text}</p>
         <Link className="btn s" to="/contact">{c.cta}</Link>
       </Reveal>

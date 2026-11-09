@@ -157,3 +157,9 @@ nav.open .burger i:nth-child(1){transform:translateY(7px) rotate(45deg)}nav.open
 .ok{display:none;text-align:center;padding:40px 0}.ok.o{display:block;animation:pgin .5s}.ok path{stroke-dasharray:60;animation:draw .8s forwards;stroke-dashoffset:60}
 @media(max-width:860px){.grid3,.ab,.ab2,.ct{grid-template-columns:1fr}.proc{grid-template-columns:1fr 1fr}.me{max-width:280px}.two{grid-template-columns:1fr!important}.fm{padding:22px}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.hero-badge{display:inline-block;background:color-mix(in srgb,var(--blue) 12%,transparent);color:var(--blue);font-size:13px;font-weight:600;padding:7px 14px;border-radius:99px;margin-bottom:16px}
+.hero-services{list-style:none;padding:0;margin:20px 0 0;display:flex;flex-wrap:wrap;gap:8px}
+.hero-services li{font-size:13px;font-weight:500;padding:6px 12px;border-radius:10px;background:var(--card);border:1px solid color-mix(in srgb,var(--ink) 12%,transparent)}
+.hero-services li:before{content:"✓ ";color:var(--or);font-weight:700}
+.hero p{margin:18px 0 28px}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap}

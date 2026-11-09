@@ -1,0 +1,152 @@
+/* ─────────────────────────────────────────────────────────────
+   Theme layer (loaded last): clean "tech partner" look —
+   light page, IBM Plex Sans Arabic, big confident headings,
+   white bordered cards, line icons in soft tiles, calm motion.
+   ───────────────────────────────────────────────────────────── */
+:root {
+  --ink: #101828; --mut: #475467; --blue: #0f4cc7; --blue2: #0b3ea6; --or: #f2763d;
+  --bg: #f8f9fc; --page: #f8f9fc; --card: #fff; --surface: #f2f4f7;
+  --border: #eaecf0; --tint: #eff4ff;
+  --sh: 0 1px 2px rgba(16,24,40,.05), 0 12px 32px -12px rgba(16,24,40,.12);
+  --gut: max(20px, calc((100% - 1200px) / 2));
+  --sec: clamp(64px, 9vw, 112px);
+}
+:root[data-theme='dark'] {
+  --ink: #f2f4f7; --mut: #98a2b3; --blue: #6e9bff; --blue2: #5585f0;
+  --bg: #0b1220; --page: #0b1220; --card: #111a2b; --surface: #16213a;
+  --border: #1f2a3d; --tint: rgba(110,155,255,.12);
+  --sh: 0 12px 32px -12px rgba(0,0,0,.6);
+}
+
+/* ── base ── */
+html body, html[lang] body *:not(svg):not(svg *) { font-family: 'IBM Plex Sans Arabic', system-ui, sans-serif; }
+body { background: var(--page); -webkit-font-smoothing: antialiased; }
+.shell { background: var(--page); }
+.pg.on { animation: pgFade .4s ease both; }
+@keyframes pgFade { from { opacity: 0 } }
+
+section { padding-inline: var(--gut); }
+nav { padding-inline: var(--gut); }
+
+h1, h2, h3 { color: var(--ink); letter-spacing: -.01em; }
+html[lang='ar'] h1, html[lang='ar'] h2, html[lang='ar'] h3 { letter-spacing: 0; }
+h1 { font-size: clamp(38px, 6vw, 72px); line-height: 1.18; font-weight: 700; }
+h2, .feat h2, .band h2 { font-size: clamp(28px, 4.2vw, 48px); line-height: 1.25; font-weight: 700; }
+h3, .fi h3, .sv h3, .pc2 h3, .ti h3 { font-size: 18px; line-height: 1.4; font-weight: 600; }
+p, .feat > div:first-child p, .mapt p, .faq p, .fi p, .sv li, .pc2 p, .ti p { font-size: 16px; line-height: 1.8; color: var(--mut); }
+.hero p, .ph p, .com p, .feat > div:first-child p { font-size: clamp(16px, 1.6vw, 18px); max-width: 620px; }
+
+/* buttons */
+.btn { min-height: 52px; padding: 0 24px; border-radius: 12px; font: 600 16px 'IBM Plex Sans Arabic', sans-serif; justify-content: center; }
+.btn.s { min-height: 42px; padding: 0 16px; font-size: 14px; }
+.btn:hover { transform: none; box-shadow: 0 8px 20px -8px color-mix(in srgb, var(--blue) 60%, transparent); }
+.btn.o { border-color: var(--border); background: var(--card); color: var(--ink); }
+.btn.o:hover { border-color: var(--ink); background: var(--card); color: var(--ink); }
+
+/* line icon tile */
+.ic { width: 48px; height: 48px; border-radius: 14px; background: var(--tint); color: var(--blue); box-shadow: none; display: grid; place-items: center; font-size: 22px; margin-bottom: 20px; transition: background .3s, color .3s; }
+.ic svg { width: 24px; height: 24px; }
+
+/* cards */
+.fi, .sv, .prj, .ci, .fm, .tc {
+  background: var(--card); border: 1px solid var(--border); border-radius: 20px; box-shadow: none;
+  transition: border-color .3s, box-shadow .3s;
+}
+.fi, .sv { padding: 28px; }
+.fi:hover, .sv:hover, .prj:hover, .ci:hover, .tc:hover { transform: none; border-color: color-mix(in srgb, var(--blue) 35%, var(--border)); box-shadow: var(--sh); }
+.fi:hover .ic, .sv:hover .ic { transform: none; background: var(--blue); color: #fff; }
+
+/* remove hover motions that shift layout */
+.st:hover, .pc2:hover, .me:hover, .mp:hover, .av:hover, .tech span:hover, footer a:hover,
+[dir='rtl'] footer a:hover, .stage:hover .phone { transform: none; }
+.stage:hover .phone { transform: rotate(7deg); }
+.q:hover, [dir='rtl'] .q:hover { padding-inline: 0; color: var(--blue); }
+.q:hover span, [dir='rtl'] .q:hover span, [dir='rtl'] .q:hover span.flip { transform: none; }
+.tg.sw, [dir='rtl'] .tg.sw { animation: pgFade .4s ease; }
+
+/* split headings: room for Arabic dots/diacritics inside the mask */
+.split .w { padding: .1em 0 .22em; margin: -.1em 0 -.22em; }
+
+/* ── nav ── */
+nav { padding-block: 18px; border-bottom: 1px solid var(--border); background: color-mix(in srgb, var(--page) 85%, transparent); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 30; }
+.links { gap: clamp(16px, 2.4vw, 32px); font-size: 15px; }
+
+/* ── hero ── */
+.hero { grid-template-columns: 1.15fr .85fr; gap: 40px; min-height: auto; padding-block: clamp(48px, 7vw, 96px) clamp(40px, 6vw, 80px); }
+.hero-badge { background: var(--card); border: 1px solid var(--border); color: var(--ink); font-size: 14px; padding: 8px 14px; border-radius: 99px; margin-bottom: 24px; }
+.hero-badge::before { content: ''; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--blue); margin-inline-end: 8px; vertical-align: middle; }
+.hero h1 em { color: var(--blue); }
+.hero-services { margin-top: 24px; }
+.hero-services li { font-size: 14px; padding: 6px 12px; border-radius: 99px; background: var(--card); border-color: var(--border); }
+.hero-services li:before { color: var(--blue); }
+.hero p { margin: 20px 0 32px; }
+.stage { height: 500px; }
+
+/* ── stats ── */
+.stats { padding: clamp(28px, 4vw, 44px) var(--gut); background: var(--blue); }
+.st span { font-size: 13px; max-width: 90px; }
+
+/* ── features ── */
+.feat { grid-template-columns: 1fr; gap: 48px; padding-block: var(--sec) 0; }
+.feat > div:first-child { max-width: 760px; }
+.feat > div:first-child > svg { display: none; }
+.feat h2 + p { margin-top: 16px; }
+.fl { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+
+/* ── other sections ── */
+.map { padding-top: var(--sec); }
+.com { padding-top: var(--sec); gap: 40px; }
+.sec { padding-block: clamp(40px, 6vw, 72px); }
+.tes { padding-top: var(--sec); }
+.tc { padding: 28px; }
+.tg { gap: 24px; }
+.faq { padding-block: var(--sec); gap: clamp(32px, 5vw, 64px); }
+.q { font-size: 17px; padding: 22px 0; border-color: var(--border); }
+.qa { font-size: 16px; line-height: 1.8; }
+.qa.o { max-height: 400px; }
+.ph { padding-block: clamp(40px, 6vw, 80px) clamp(24px, 4vw, 48px); }
+.crumb { font-size: 14px; }
+.grid3 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.proc { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.band { border-radius: 24px; padding: clamp(28px, 5vw, 48px); }
+.band h2 { color: #fff; }
+.sv:before { display: none; }
+footer { padding-inline: var(--gut); }
+footer p { max-width: 280px; font-size: 14px; }
+footer a { font-size: 14px; }
+
+/* ── tablet ── */
+@media (max-width: 1024px) {
+  .hero { grid-template-columns: 1fr; }
+  .stage { height: 440px; }
+  .com, .faq, .map { grid-template-columns: 1fr; }
+  .tg { grid-template-columns: 1fr 1fr; }
+  .fg { grid-template-columns: 1fr 1fr 1fr; }
+  .ab { grid-template-columns: 260px 1fr; gap: 32px; }
+  .mapt { grid-column: 1; }
+  .world { width: 100%; }
+}
+
+/* ── mobile ── */
+@media (max-width: 640px) {
+  :root { --gut: 20px; }
+  .hero { padding-top: 36px; text-align: start; }
+  .hero-ctas { flex-direction: column; }
+  .hero-ctas .btn { width: 100%; }
+  .stage { height: 380px; transform: scale(.85); transform-origin: top center; margin-bottom: -40px; }
+  .stats { grid-template-columns: 1fr 1fr; row-gap: 20px; }
+  .st { flex-direction: column; gap: 4px; text-align: center; border: 0 !important; }
+  .st span { max-width: none; }
+  .fl, .tg, .grid3, .proc, .ab, .ab2, .ct { grid-template-columns: 1fr; }
+  .fi, .sv, .tc { padding: 22px; }
+  .fg { grid-template-columns: 1fr 1fr; }
+  .fg > :first-child { grid-column: 1 / -1; }
+  .band { flex-direction: column; align-items: stretch; text-align: start; }
+  .band .btn { width: 100%; }
+  .mail { width: 100%; }
+  .mail input { flex: 1; width: auto; max-width: none; }
+  .search { width: 100%; }
+  .th { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .me { max-width: 240px; margin-inline: auto; }
+  .mets { flex-wrap: wrap; gap: 18px; }
+}

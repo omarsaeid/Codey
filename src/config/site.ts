@@ -5,9 +5,8 @@
  */
 const configuredWhatsAppNumber = import.meta.env.VITE_WHATSAPP_NUMBER?.trim();
 
-// Kept as a fallback because the original portfolio already displayed this
-// sample number. Replace it before publishing the real portfolio.
-export const whatsappNumber = (configuredWhatsAppNumber || '201000000000').replace(/\D/g, '');
+// Fallback: Codey's WhatsApp number, used when VITE_WHATSAPP_NUMBER is not set.
+export const whatsappNumber = (configuredWhatsAppNumber || '201029937797').replace(/\D/g, '');
 export const whatsappDisplayNumber = /^20\d{10}$/.test(whatsappNumber)
   ? `+20 ${whatsappNumber.slice(2, 5)} ${whatsappNumber.slice(5, 8)} ${whatsappNumber.slice(8)}`
   : `+${whatsappNumber}`;

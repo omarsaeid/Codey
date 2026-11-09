@@ -1,3 +1,5 @@
+import Icon from '../components/ui/Icon';
+import SplitText from '../components/ui/SplitText';
 import { Link } from 'react-router-dom';
 import PageHeader from '../components/PageHeader';
 import Reveal from '../components/ui/Reveal';
@@ -18,7 +20,7 @@ export default function Services() {
         <div className="grid3">
           {services.map((sv, i) => (
             <Reveal key={sv.id} className="sv" delay={((i % 3) + 1) as 1 | 2 | 3}>
-              <div className="ic">{sv.icon}</div>
+              <Icon name={sv.icon} />
               <h3>{tr(sv.title)}</h3>
               <p style={{ fontSize: 13 }}>{tr(sv.description)}</p>
               <ul>{sv.points.map((x) => <li key={x.en}>{tr(x)}</li>)}</ul>
@@ -41,7 +43,7 @@ export default function Services() {
       <section className="sec" style={{ paddingTop: 0 }}>
         <Reveal className="band">
           <div>
-            <h2>{s.bandTitle}</h2>
+            <SplitText>{s.bandTitle}</SplitText>
             <p style={{ color: '#fff', opacity: 0.85, marginTop: 8 }}>{s.bandText}</p>
           </div>
           <Link className="btn" to="/contact">{s.bandCta}</Link>

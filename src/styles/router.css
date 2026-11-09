@@ -427,3 +427,17 @@ html[lang='ar'] p { line-height: 1.85; }
 /* Map section: decorations are anchored to the left, so keep the grid LTR and only flip the text column. */
 [dir='rtl'] .map { direction: ltr; }
 [dir='rtl'] .mapt { direction: rtl; }
+
+/* ── Split-word headline motion (tiqnia-style) ── */
+.split{perspective:900px}
+.split .w{display:inline-block;vertical-align:top;overflow:hidden;padding-bottom:.14em;margin-bottom:-.14em}
+.split .w>span{display:inline-block;will-change:transform}
+@keyframes wIn{from{transform:translateY(58%) rotate(2deg);opacity:0}to{transform:none;opacity:1}}
+@keyframes fUp{from{transform:translateY(18px);opacity:.15}to{transform:none;opacity:1}}
+@media (prefers-reduced-motion:no-preference){
+  .split .wi{animation:1.1s cubic-bezier(.16,1,.3,1) both wIn}
+  .hero>div:first-child>:not(h1):not(svg),.ph>p,.ph>.crumb{animation:.9s cubic-bezier(.16,1,.3,1) both fUp}
+  .hero>div:first-child>.hero-services{animation-delay:.22s}
+  .hero>div:first-child>p,.ph>p{animation-delay:.3s}
+  .hero>div:first-child>.hero-ctas{animation-delay:.38s}
+}

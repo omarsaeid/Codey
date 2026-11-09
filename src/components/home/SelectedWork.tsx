@@ -1,3 +1,4 @@
+import SplitText from '../ui/SplitText';
 import { Link } from 'react-router-dom';
 import { projects, type Project } from '../../data/projects';
 import { useLang } from '../../i18n/LanguageContext';
@@ -9,7 +10,7 @@ export default function SelectedWork({ onOpen }: { onOpen: (p: Project) => void 
   return (
     <Reveal as="section" className="sec" style={{ paddingTop: 90, paddingBottom: 0 }}>
       <div className="th">
-        <h2>{t.work.title1}<br />{t.work.title2}</h2>
+        <SplitText>{t.work.title1}<br />{t.work.title2}</SplitText>
         <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
           <Link className="btn s o" to="/services">{t.work.allServices}</Link>
           <Link className="btn s" to="/portfolio">{t.work.allProjects}</Link>

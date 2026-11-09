@@ -1,3 +1,4 @@
+import SplitText from '../ui/SplitText';
 import { useState, type FormEvent } from 'react';
 import { faqs } from '../../data/content';
 import Reveal from '../ui/Reveal';
@@ -26,7 +27,7 @@ export default function Faq() {
   return (
     <section className="faq">
       <Reveal>
-        <h2>{t.faq.title1}<br />{t.faq.title2}</h2>
+        <SplitText>{t.faq.title1}<br />{t.faq.title2}</SplitText>
         <p>{t.faq.text}</p>
         <form className="mail" onSubmit={submit}>
           <input type="email" required placeholder={t.faq.placeholder} value={email} onChange={(e) => setEmail(e.target.value)} aria-label={t.faq.placeholder} />

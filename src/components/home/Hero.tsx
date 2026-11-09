@@ -1,3 +1,4 @@
+import SplitText from '../ui/SplitText';
 import { Link } from 'react-router-dom';
 import { useLang } from '../../i18n/LanguageContext';
 
@@ -10,17 +11,24 @@ export default function Hero() {
         <svg className="doodle hero-doodle" style={{ left: '46%', top: -6, width: 80 }} viewBox="0 0 80 50" fill="none" stroke="#0b57d0" strokeWidth="2.5" strokeLinecap="round" aria-hidden="true">
           <path d="M4 46c10-24 34-30 62-14M30 6l-3 12M44 2l1 14M60 10l-6 9" />
         </svg>
-        <h1>
-          {h.l1}<br />{h.l2}<br />{h.l3}{h.l3 && ' '}
+        <span className="hero-badge">{h.badge}</span>
+        <SplitText as="h1" mode="intro">
+          {h.l1}<br />{h.l2}{h.l3 && <><br />{h.l3}</>}{' '}
           <em>
             {h.em}
             <svg viewBox="0 0 200 14" preserveAspectRatio="none" aria-hidden="true">
               <path d="M2 9C50 3 120 2 198 7" stroke="#f2692b" strokeWidth="3" fill="none" strokeLinecap="round" />
             </svg>
           </em>
-        </h1>
+        </SplitText>
+        <ul className="hero-services">
+          {h.services.map((s) => <li key={s}>{s}</li>)}
+        </ul>
         <p>{h.text}</p>
-        <Link className="btn" to="/contact">{h.cta}</Link>
+        <div className="hero-ctas">
+          <Link className="btn" to="/contact">{h.cta}</Link>
+          <Link className="btn o" to="/portfolio">{h.cta2}</Link>
+        </div>
       </div>
       <div className="stage">
         <span className="cloud" style={{ top: 40, left: '4%' }}></span>

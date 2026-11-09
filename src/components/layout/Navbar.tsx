@@ -56,7 +56,7 @@ export default function Navbar() {
       </div>
       <div className="cta">
         <Link className="btn s" to="/contact">{t.nav.hire}</Link>
-        <a className="btn s o" href="/resume.pdf" target="_blank" rel="noreferrer">{t.nav.resume}</a>
+        <Link className="btn s o" to="/contact">{t.nav.resume}</Link>
       </div>
       <div className="nav-tools">
         <button className="lang-toggle" type="button" onClick={toggleLang} aria-label={t.nav.langAria} title={t.nav.langAria}>

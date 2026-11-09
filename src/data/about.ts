@@ -1,25 +1,22 @@
 import type { Bi } from '../i18n/LanguageContext';
 
+/** Company values shown on the About page. */
 export const timeline: { period: Bi; role: Bi; place: Bi; text: Bi }[] = [
   {
-    period: { en: '2023 — Now', ar: '2023 — الآن' }, role: { en: 'Senior Full-Stack Developer', ar: 'مطوّر Full-Stack أول' },
-    place: { en: 'Freelance · Remote', ar: 'عمل حر · عن بُعد' },
-    text: { en: 'Building products for startups in fintech, e-commerce and real estate.', ar: 'ببني منتجات لشركات ناشئة في التكنولوجيا المالية والتجارة الإلكترونية والعقارات.' },
+    period: { en: '01', ar: '01' }, role: { en: 'Clarity First', ar: 'الوضوح الأول' }, place: { en: '', ar: '' },
+    text: { en: 'A clear plan, scope and price before any work starts. No surprises.', ar: 'خطة ونطاق شغل وسعر واضحين قبل ما نبدأ. من غير مفاجآت.' },
   },
   {
-    period: { en: '2020 — 2023', ar: '2020 — 2023' }, role: { en: 'Lead Front-End Engineer', ar: 'قائد فريق الواجهات الأمامية' },
-    place: { en: 'Nile Tech · Cairo', ar: 'Nile Tech · القاهرة' },
-    text: { en: 'Led a team of 6 and launched a shared design system.', ar: 'قدت فريق من 6 مطورين وأطلقنا نظام تصميم موحد.' },
+    period: { en: '02', ar: '02' }, role: { en: 'Quality Code', ar: 'جودة الكود' }, place: { en: '', ar: '' },
+    text: { en: 'Clean, tested and documented code that is easy to grow and maintain.', ar: 'كود نضيف ومتجرّب وموثّق، سهل يكبر ويتطوّر.' },
   },
   {
-    period: { en: '2017 — 2020', ar: '2017 — 2020' }, role: { en: 'Web Developer', ar: 'مطوّر ويب' },
-    place: { en: 'Pixel Studio · Alexandria', ar: 'Pixel Studio · الإسكندرية' },
-    text: { en: 'Delivered 40+ client websites and web apps.', ar: 'سلّمت أكتر من 40 موقع وتطبيق ويب للعملاء.' },
+    period: { en: '03', ar: '03' }, role: { en: 'On-Time Delivery', ar: 'التسليم في الميعاد' }, place: { en: '', ar: '' },
+    text: { en: 'Agreed milestones and regular progress updates throughout the project.', ar: 'مراحل متفق عليها وتحديثات مستمرة طول فترة المشروع.' },
   },
   {
-    period: { en: '2012 — 2016', ar: '2012 — 2016' }, role: { en: 'B.Sc. Computer Science', ar: 'بكالوريوس علوم الحاسب' },
-    place: { en: 'Alexandria University', ar: 'جامعة الإسكندرية' },
-    text: { en: 'Graduated with honors, focus on software engineering.', ar: 'تخرجت بمرتبة الشرف، وتخصصت في هندسة البرمجيات.' },
+    period: { en: '04', ar: '04' }, role: { en: 'Support After Launch', ar: 'دعم بعد الإطلاق' }, place: { en: '', ar: '' },
+    text: { en: 'We stay with you after launch to fix, improve and scale.', ar: 'بنفضل معاك بعد الإطلاق نصلّح ونطوّر ونكبّر.' },
   },
 ];
 
@@ -34,8 +31,8 @@ export const skills: { name: Bi; level: number }[] = [
 export const technologies = ['React', 'Next.js', 'TypeScript', 'Node.js', 'Tailwind', 'Flutter', 'PostgreSQL', 'MongoDB', 'Docker', 'AWS', 'Figma', 'Git'];
 
 export const stats: ({ id: string; text: Bi } & ({ n: number; suffix: string } | { label: string }))[] = [
-  { id: 'years', n: 10, suffix: '', text: { en: 'Years of Experience', ar: 'سنين خبرة' } },
-  { id: 'projects', n: 120, suffix: '+', text: { en: 'Projects Delivered', ar: 'مشروع تم تسليمه' } },
-  { id: 'clients', n: 80, suffix: '', text: { en: 'Happy Clients', ar: 'عميل سعيد' } },
-  { id: 'rating', label: '4.9', text: { en: 'Overall Rating', ar: 'التقييم العام' } },
+  { id: 'projects', n: 3, suffix: '', text: { en: 'Projects Delivered', ar: 'مشاريع تم تسليمها' } },
+  { id: 'clients', n: 3, suffix: '', text: { en: 'Happy Clients', ar: 'عملاء سعداء' } },
+  { id: 'services', n: 4, suffix: '', text: { en: 'Core Services', ar: 'خدمات أساسية' } },
+  { id: 'response', label: '24h', text: { en: 'Response Time', ar: 'سرعة الرد' } },
 ];

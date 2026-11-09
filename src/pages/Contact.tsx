@@ -1,3 +1,4 @@
+import Icon from '../components/ui/Icon';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useState, type FormEvent } from 'react';
 import { useSearchParams } from 'react-router-dom';
@@ -60,7 +61,7 @@ export default function Contact() {
             {contactInfo.map((info) => {
               const inner = (
                 <>
-                  <div className="ic">{info.icon}</div>
+                  <Icon name={info.icon} />
                   <div><small>{tr(info.label)}</small><b dir="auto">{tr(info.value)}</b></div>
                 </>
               );

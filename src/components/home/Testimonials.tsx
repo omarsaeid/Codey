@@ -1,3 +1,4 @@
+import SplitText from '../ui/SplitText';
 import { useState } from 'react';
 import { testimonials } from '../../data/content';
 import { useLang } from '../../i18n/LanguageContext';
@@ -14,7 +15,7 @@ export default function Testimonials() {
   return (
     <section className="tes">
       <Reveal className="th">
-        <h2>{tx.testimonials.title1}<br />{tx.testimonials.title2}</h2>
+        <SplitText>{tx.testimonials.title1}<br />{tx.testimonials.title2}</SplitText>
         <div className="ar">
           <button aria-label={tx.testimonials.prev} onClick={() => setStart((s) => (s + n - 1) % n)}><span className="flip">←</span></button>
           <button aria-label={tx.testimonials.next} onClick={() => setStart((s) => (s + 1) % n)}><span className="flip">→</span></button>

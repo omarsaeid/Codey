@@ -1,3 +1,4 @@
+import SplitText from '../ui/SplitText';
 import type { CSSProperties } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLang } from '../../i18n/LanguageContext';
@@ -28,7 +29,7 @@ export default function WorldMap() {
         <path d="M30 2c30 20 20 40-6 50S4 80 36 118" />
       </svg>
       <Reveal className="mapt">
-        <h2>{m.title}</h2>
+        <SplitText>{m.title}</SplitText>
         <p>{m.text}</p>
         <div className="search">
           <button type="button" className="f" onClick={toContact}><em>⌖</em><div><b>{m.service}</b>{m.serviceHint}</div></button>

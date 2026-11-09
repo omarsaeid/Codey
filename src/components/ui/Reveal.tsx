@@ -21,10 +21,10 @@ export default function Reveal({ children, as = 'div', delay = 0, className, sty
     <Tag
       className={className}
       style={style}
-      initial={{ opacity: 0, y: 34 }}
+      initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.9, delay: delays[delay], ease: [0.2, 0.7, 0.2, 1] }}
+      viewport={{ once: false, margin: '0px 0px -12% 0px' }}
+      transition={{ duration: 0.9, delay: delays[delay], ease: [0.16, 1, 0.3, 1] }}
       onViewportEnter={onEnter}
     >
       {children}
