@@ -1,11 +1,14 @@
 import { Link } from 'react-router-dom';
 import PageHeader from '../components/PageHeader';
+import { useLang } from '../i18n/LanguageContext';
 
 export default function NotFound() {
+  const { t } = useLang();
+  const n = t.notFound;
   return (
     <main className="pg on">
-      <PageHeader crumb="404" title={<>Page Not <span style={{ color: 'var(--or)' }}>Found.</span></>} text="The page you are looking for does not exist or has moved." />
-      <section className="sec" style={{ paddingTop: 0 }}><Link className="btn" to="/">Back to Home</Link></section>
+      <PageHeader crumb="404" title={<>{n.title} <span style={{ color: 'var(--or)' }}>{n.em}</span></>} text={n.text} />
+      <section className="sec" style={{ paddingTop: 0 }}><Link className="btn" to="/">{n.back}</Link></section>
     </main>
   );
 }

@@ -317,3 +317,113 @@ a:focus-visible,
     min-height: 0;
   }
 }
+
+/* ---------- Theme fixes: surfaces that stay light in both themes ---------- */
+/* The hero phone screen is always white, so lock its text tokens to the light palette. */
+.scr { --ink: #172338; --mut: #66758d; --blue: #2457d6; color: #172338; }
+.top span { color: #172338; }
+/* Modal close button: white disc needs a dark glyph in every theme. */
+.x { color: #172338; display: grid; place-items: center; padding: 0; box-shadow: 0 6px 16px rgba(10, 20, 40, 0.25); }
+/* White social discs keep the darker brand blue for contrast. */
+.soc, .sc span { color: #2457d6; }
+:root[data-theme='dark'] .soc { background: #263850; color: #9fc0ff; }
+:root[data-theme='dark'] .cloud { opacity: 0.35; }
+:root[data-theme='dark'] .mb .preview-note { color: var(--mut); }
+
+/* ---------- Navbar tools: language + theme ---------- */
+.nav-tools { display: flex; align-items: center; gap: 8px; flex: 0 0 auto; }
+.lang-toggle {
+  min-width: 40px; height: 40px; padding: 0 12px;
+  border: 1px solid var(--border); border-radius: 99px;
+  background: var(--surface); color: var(--ink);
+  font: 700 13px/1 Cairo, Outfit, sans-serif; cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.lang-toggle:hover { transform: translateY(-2px); border-color: var(--blue); }
+
+/* About badges (positioned with logical sides so they mirror in RTL) */
+.bd1 { inset-inline-start: -18px; top: 36px; }
+.bd2 { inset-inline-end: -14px; bottom: 60px; }
+
+/* ---------- Arabic / RTL ---------- */
+html[lang='ar'] body,
+html[lang='ar'] body *:not(svg):not(svg *) {
+  font-family: Cairo, Outfit, sans-serif;
+}
+html[lang='ar'] h1,
+html[lang='ar'] h2,
+html[lang='ar'] h3 { letter-spacing: 0; line-height: 1.35; }
+html[lang='ar'] p { line-height: 1.85; }
+[dir='rtl'] .flip { display: inline-block; transform: scaleX(-1); }
+[dir='rtl'] .f { text-align: right; }
+[dir='rtl'] .st { border-right: 0; border-left: 1px solid rgba(255, 255, 255, 0.25); }
+[dir='rtl'] .st:last-child { border: 0; }
+[dir='rtl'] .sch u { margin-left: 0; margin-right: auto; }
+[dir='rtl'] .q:hover { padding-left: 0; padding-right: 10px; }
+[dir='rtl'] .q:hover span { transform: translateX(-8px); }
+[dir='rtl'] .q:hover span.flip { transform: scaleX(-1) translateX(8px); }
+[dir='rtl'] footer a:hover { transform: translateX(-4px); }
+[dir='rtl'] .sv li { padding: 4px 20px 4px 0; }
+[dir='rtl'] .sv li:before { left: auto; right: 0; }
+[dir='rtl'] .sv:before { left: auto; right: 0; }
+[dir='rtl'] .tl { border-left: 0; padding-left: 0; border-right: 2px solid rgba(11, 87, 208, 0.2); padding-right: 28px; }
+[dir='rtl'] .ti:before { left: auto; right: -37px; }
+[dir='rtl'] .fld label { left: auto; right: 17px; }
+[dir='rtl'] .x { right: auto; left: 14px; }
+[dir='rtl'] .tg.sw { animation-name: sw-rtl; }
+@keyframes sw-rtl { from { opacity: 0; transform: translateX(-30px); } }
+[dir='rtl'] .whatsapp-float { right: auto; left: max(22px, env(safe-area-inset-left)); }
+@media (max-width: 520px) { [dir='rtl'] .whatsapp-float { left: 16px; } }
+@media (max-width: 860px) {
+  [dir='rtl'] nav .logo { margin-right: 0; margin-left: auto; }
+  [dir='rtl'] nav.open .cta { left: auto; right: 42px; }
+}
+/* Latin-only UI bits keep left-to-right order inside Arabic text. */
+[dir='rtl'] .tags span,
+[dir='rtl'] .tech span,
+[dir='rtl'] .mets b { direction: ltr; unicode-bidi: isolate; }
+
+/* ---------- Promo notification ---------- */
+.promo {
+  position: fixed; z-index: 45;
+  left: max(22px, env(safe-area-inset-left));
+  bottom: max(22px, env(safe-area-inset-bottom));
+  display: flex; gap: 14px; align-items: flex-start;
+  width: min(360px, calc(100vw - 32px));
+  padding: 18px 18px 18px 16px;
+  border: 1px solid var(--border); border-radius: 22px;
+  background: var(--card); color: var(--ink);
+  box-shadow: 0 24px 50px -18px rgba(10, 25, 60, 0.45);
+}
+[dir='rtl'] .promo { left: auto; right: max(22px, env(safe-area-inset-right)); padding: 18px 16px 18px 18px; }
+.promo-badge {
+  flex: 0 0 auto; display: grid; place-items: center; align-content: center; gap: 2px;
+  width: 64px; height: 64px; border-radius: 18px;
+  background: linear-gradient(135deg, #f2763d, #ff9f6b); color: #fff;
+  box-shadow: 0 10px 22px -10px rgba(242, 118, 61, 0.8);
+}
+.promo-badge span { font-size: 20px; line-height: 1; }
+.promo-badge b { font-size: 16px; line-height: 1; direction: ltr; }
+.promo-body { min-width: 0; padding-inline-end: 18px; }
+.promo-body small { display: inline-block; margin-bottom: 4px; color: var(--or); font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+.promo-body strong { display: block; font-size: 16px; line-height: 1.3; }
+.promo-body p { margin: 4px 0 12px; font-size: 13px; line-height: 1.5; }
+.promo-x {
+  position: absolute; top: 10px; inset-inline-end: 10px;
+  width: 26px; height: 26px; border: 0; border-radius: 50%;
+  background: var(--surface); color: var(--mut); cursor: pointer; font-size: 12px;
+  display: grid; place-items: center;
+}
+.promo-x:hover { color: var(--ink); }
+.promo-applied {
+  margin-bottom: 18px; padding: 10px 14px; border-radius: 14px;
+  background: color-mix(in srgb, var(--or) 14%, transparent); color: var(--or);
+  font-size: 13px; font-weight: 700;
+}
+@media (max-width: 520px) {
+  .promo, [dir='rtl'] .promo { left: 16px; right: 16px; width: auto; bottom: calc(max(16px, env(safe-area-inset-bottom)) + 70px); }
+}
+
+/* Map section: decorations are anchored to the left, so keep the grid LTR and only flip the text column. */
+[dir='rtl'] .map { direction: ltr; }
+[dir='rtl'] .mapt { direction: rtl; }

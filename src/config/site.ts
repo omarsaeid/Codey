@@ -16,3 +16,24 @@ export const contactEmail = import.meta.env.VITE_CONTACT_EMAIL?.trim() || 'hello
 export function createWhatsAppUrl(message: string) {
   return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 }
+
+/**
+ * In-site promotion shown to visitors shortly after they open the site.
+ * Set `enabled: false` to hide it, change `percent` for a different discount,
+ * and set `endsAt` (YYYY-MM-DD) to stop showing it automatically after that date.
+ */
+export const promo = {
+  enabled: true,
+  percent: 30,
+  endsAt: '' as string,
+  /** Days before a visitor who dismissed the offer sees it again. */
+  remindAfterDays: 3,
+  /** Delay before it slides in, in milliseconds. */
+  delayMs: 1500,
+};
+
+export function isPromoActive(now = new Date()) {
+  if (!promo.enabled) return false;
+  if (!promo.endsAt) return true;
+  return now <= new Date(`${promo.endsAt}T23:59:59`);
+}

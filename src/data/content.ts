@@ -1,34 +1,53 @@
 import { contactEmail, whatsappDisplayNumber, whatsappNumber } from '../config/site';
+import type { Bi } from '../i18n/LanguageContext';
 
-export interface Testimonial { quote: string; name: string; role: string; stars: number; face: [string, string, string] }
+export interface Testimonial { quote: Bi; name: Bi; role: Bi; stars: number; face: [string, string, string] }
 
 export const testimonials: Testimonial[] = [
-  { quote: 'Thanks to Codey I can now realize my product vision around the world', name: 'Wade Warren', role: 'Photographer', stars: 5, face: ['#e0a074', '#1a2026', '#2a7cf0'] },
-  { quote: 'I think this is the best dev service I have ever tried and I recommend it to you', name: 'Theresa Jordan', role: 'Traveler', stars: 4, face: ['#e8a98a', '#2a1a1a', '#e0443f'] },
-  { quote: 'Codey helps me a lot in building interesting digital products', name: 'James Wilson', role: 'Climber', stars: 4, face: ['#e0a074', '#1a2026', '#2a7cf0'] },
-  { quote: 'Fun, from the first call to launch. Beautiful code, pretty and cool', name: 'Jhon Tosan', role: 'Adventurer', stars: 3, face: ['#f0b98d', '#1a2026', '#e0b02a'] },
+  {
+    quote: { en: 'Thanks to Codey I can now realize my product vision around the world', ar: 'بفضل Codey قدرت أحقق رؤيتي لمنتجي وأوصله لناس في كل مكان' },
+    name: { en: 'Wade Warren', ar: 'Wade Warren' }, role: { en: 'Startup Founder', ar: 'مؤسس شركة ناشئة' }, stars: 5, face: ['#e0a074', '#1a2026', '#2a7cf0'],
+  },
+  {
+    quote: { en: 'I think this is the best dev service I have ever tried and I recommend it to you', ar: 'أحسن خدمة برمجة جربتها لحد دلوقتي، وأنصح بيها جدًا' },
+    name: { en: 'Theresa Jordan', ar: 'Theresa Jordan' }, role: { en: 'Product Manager', ar: 'مديرة منتج' }, stars: 4, face: ['#e8a98a', '#2a1a1a', '#e0443f'],
+  },
+  {
+    quote: { en: 'Codey helps me a lot in building interesting digital products', ar: 'Codey ساعدني كتير في بناء منتجات رقمية مميزة' },
+    name: { en: 'James Wilson', ar: 'James Wilson' }, role: { en: 'E-commerce Owner', ar: 'صاحب متجر إلكتروني' }, stars: 4, face: ['#e0a074', '#1a2026', '#2a7cf0'],
+  },
+  {
+    quote: { en: 'Fun, from the first call to launch. Beautiful code, pretty and cool', ar: 'تجربة ممتعة من أول مكالمة لحد الإطلاق. كود نضيف وشغل جميل' },
+    name: { en: 'Jhon Tosan', ar: 'Jhon Tosan' }, role: { en: 'Agency Lead', ar: 'مدير وكالة' }, stars: 3, face: ['#f0b98d', '#1a2026', '#e0b02a'],
+  },
 ];
 
-export const faqs = [
-  { q: 'What is Codey?', a: 'A freelance developer studio building web and mobile products.' },
-  { q: 'How to book a project?', a: 'Pick a service and a date, then send a message — no payment needed to start.' },
-  { q: 'What kind of service will I get?', a: 'Design-to-code builds, audits, and ongoing support.' },
+export const faqs: { q: Bi; a: Bi }[] = [
+  { q: { en: 'What is Codey?', ar: 'إيه هو Codey؟' }, a: { en: 'A freelance developer studio building web and mobile products.', ar: 'استوديو تطوير مستقل بيبني منتجات ويب وموبايل.' } },
+  { q: { en: 'How to book a project?', ar: 'أحجز مشروع إزاي؟' }, a: { en: 'Pick a service and your budget, then send a message — no payment needed to start.', ar: 'اختار الخدمة والميزانية وابعت رسالة — مش محتاج تدفع حاجة عشان نبدأ.' } },
+  { q: { en: 'What kind of service will I get?', ar: 'هاخد خدمة شكلها إيه؟' }, a: { en: 'Design-to-code builds, audits, and ongoing support.', ar: 'تحويل التصميم لكود، ومراجعة المشاريع، ودعم مستمر.' } },
 ];
 
-export const contactInfo = [
-  { icon: '✉️', label: 'Email', value: contactEmail, href: `mailto:${contactEmail}` },
-  { icon: '📞', label: 'Phone / WhatsApp', value: whatsappDisplayNumber, href: `https://wa.me/${whatsappNumber}` },
-  { icon: '📍', label: 'Location', value: 'Cairo, Egypt (GMT+2)' },
-  { icon: '⏱', label: 'Response time', value: 'Within 24 hours' },
+export const contactInfo: { icon: string; label: Bi; value: Bi; href?: string }[] = [
+  { icon: '✉️', label: { en: 'Email', ar: 'البريد الإلكتروني' }, value: { en: contactEmail, ar: contactEmail }, href: `mailto:${contactEmail}` },
+  { icon: '📞', label: { en: 'Phone / WhatsApp', ar: 'تليفون / واتساب' }, value: { en: whatsappDisplayNumber, ar: whatsappDisplayNumber }, href: `https://wa.me/${whatsappNumber}` },
+  { icon: '📍', label: { en: 'Location', ar: 'المكان' }, value: { en: 'Cairo, Egypt (GMT+2)', ar: 'القاهرة، مصر (GMT+2)' } },
+  { icon: '⏱', label: { en: 'Response time', ar: 'وقت الرد' }, value: { en: 'Within 24 hours', ar: 'خلال 24 ساعة' } },
 ];
 
-export const contactServices = ['Web App', 'Mobile App', 'API / Backend', 'UI Engineering', 'Other'];
+export const contactServices: { id: string; label: Bi }[] = [
+  { id: 'web', label: { en: 'Web App', ar: 'تطبيق ويب' } },
+  { id: 'mobile', label: { en: 'Mobile App', ar: 'تطبيق موبايل' } },
+  { id: 'api', label: { en: 'API / Backend', ar: 'API / باك إند' } },
+  { id: 'ui', label: { en: 'UI Engineering', ar: 'برمجة واجهات' } },
+  { id: 'other', label: { en: 'Other', ar: 'حاجة تانية' } },
+];
 export const contactBudgets = ['< $1K', '$1K–5K', '$5K–10K', '$10K+'];
 
 export const navLinks = [
-  { to: '/', label: 'Home' },
-  { to: '/services', label: 'Services' },
-  { to: '/portfolio', label: 'Portfolio' },
-  { to: '/about', label: 'About' },
-  { to: '/contact', label: 'Contact' },
-];
+  { to: '/', key: 'home' },
+  { to: '/services', key: 'services' },
+  { to: '/portfolio', key: 'portfolio' },
+  { to: '/about', key: 'about' },
+  { to: '/contact', key: 'contact' },
+] as const;

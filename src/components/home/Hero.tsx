@@ -1,23 +1,26 @@
 import { Link } from 'react-router-dom';
+import { useLang } from '../../i18n/LanguageContext';
 
 export default function Hero() {
+  const { t } = useLang();
+  const h = t.hero;
   return (
     <section className="hero">
       <div>
-        <svg className="doodle" style={{ left: '46%', top: -6, width: 80 }} viewBox="0 0 80 50" fill="none" stroke="#0b57d0" strokeWidth="2.5" strokeLinecap="round" aria-hidden="true">
+        <svg className="doodle hero-doodle" style={{ left: '46%', top: -6, width: 80 }} viewBox="0 0 80 50" fill="none" stroke="#0b57d0" strokeWidth="2.5" strokeLinecap="round" aria-hidden="true">
           <path d="M4 46c10-24 34-30 62-14M30 6l-3 12M44 2l1 14M60 10l-6 9" />
         </svg>
         <h1>
-          Code In The<br />Cloud But In<br />A{' '}
+          {h.l1}<br />{h.l2}<br />{h.l3}{h.l3 && ' '}
           <em>
-            Good Way!
+            {h.em}
             <svg viewBox="0 0 200 14" preserveAspectRatio="none" aria-hidden="true">
               <path d="M2 9C50 3 120 2 198 7" stroke="#f2692b" strokeWidth="3" fill="none" strokeLinecap="round" />
             </svg>
           </em>
         </h1>
-        <p>Now you can ship products anywhere and anytime with a developer who cares, and of course it&apos;s built to last.</p>
-        <Link className="btn" to="/contact">Get Started</Link>
+        <p>{h.text}</p>
+        <Link className="btn" to="/contact">{h.cta}</Link>
       </div>
       <div className="stage">
         <span className="cloud" style={{ top: 40, left: '4%' }}></span>
@@ -33,11 +36,11 @@ export default function Hero() {
         </svg>
         <div className="phone">
           <div className="scr">
-            <div className="top"><b>Create Your Own Code Story.</b><span>● Hassan</span></div>
-            <div className="row">Recommended <s>See All ›</s></div>
-            <div className="cards"><div className="pc a">Mount Denali</div><div className="pc b">Mount Lore</div></div>
-            <div className="row">My Projects <s>See All ›</s></div>
-            <div className="sch"><i></i>Mount Elbrus<u>Detail</u></div>
+            <div className="top"><b>{h.phoneTitle}</b><span>{h.phoneUser}</span></div>
+            <div className="row">{h.featured} <s>{h.seeAll}</s></div>
+            <div className="cards"><div className="pc a">{h.p1}</div><div className="pc b">{h.p2}</div></div>
+            <div className="row">{h.myProjects} <s>{h.seeAll}</s></div>
+            <div className="sch"><i></i>{h.p3}<u>{h.detail}</u></div>
             <div className="tab"><i></i><i></i><i className="m"></i><i></i><i></i></div>
           </div>
         </div>

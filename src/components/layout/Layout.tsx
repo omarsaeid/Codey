@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import Footer from './Footer';
 import Navbar from './Navbar';
+import PromoToast from './PromoToast';
 import WhatsAppButton from './WhatsAppButton';
 
 function ScrollToTop() {
@@ -20,6 +21,7 @@ export default function Layout() {
       <Outlet />
       <Footer />
       <WhatsAppButton />
+      <PromoToast />
     </div>
   );
 }

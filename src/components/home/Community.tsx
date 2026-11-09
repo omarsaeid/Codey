@@ -1,5 +1,6 @@
 import type { CSSProperties } from 'react';
 import { Link } from 'react-router-dom';
+import { useLang } from '../../i18n/LanguageContext';
 import Face from '../ui/Face';
 import Reveal from '../ui/Reveal';
 
@@ -14,23 +15,25 @@ const avatars: { s: CSSProperties; f: F; big?: boolean }[] = [
 ];
 
 export default function Community() {
+  const { t } = useLang();
+  const c = t.community;
   return (
     <section className="com">
       <Reveal>
         <svg width="22" viewBox="0 0 22 18" stroke="#f2692b" strokeWidth="2" strokeLinecap="round" style={{ float: 'right', marginRight: 40 }} aria-hidden="true">
           <path d="M4 14l5-8M12 14l1-10M17 12l4-6" />
         </svg>
-        <h2>Community Is Calling, No Need For Stalling.</h2>
-        <p>Want more clean code? Join my developer community, meet friends who build together and feel the sensation.</p>
-        <Link className="btn s" to="/contact">Join Community</Link>
+        <h2>{c.title}</h2>
+        <p>{c.text}</p>
+        <Link className="btn s" to="/contact">{c.cta}</Link>
       </Reveal>
       <Reveal className="orb" delay={1}>
         {avatars.map((a, i) => (
           <div className="av" key={i} style={a.s}><Face skin={a.f[0]} hair={a.f[1]} shirt={a.f[2]} /></div>
         ))}
-        <span className="bub" style={{ left: 206, top: 60 }}>Join Us!!</span>
-        <span className="bub" style={{ left: 76, top: 130 }}>Welcome!!</span>
-        <span className="bub" style={{ left: 276, top: 210 }}>Hola!!</span>
+        <span className="bub" style={{ left: 206, top: 60 }}>{c.b1}</span>
+        <span className="bub" style={{ left: 76, top: 130 }}>{c.b2}</span>
+        <span className="bub" style={{ left: 276, top: 210 }}>{c.b3}</span>
         <span className="soc" style={{ left: 196, top: 2 }}>t</span>
         <span className="soc" style={{ left: 6, top: 130, color: '#e1306c' }}>◎</span>
         <span className="soc" style={{ left: 150, top: 290, color: '#111' }}>♪</span>

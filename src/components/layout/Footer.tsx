@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom';
-import Logo from '../ui/Logo';
 import { contactEmail } from '../../config/site';
+import { navLinks } from '../../data/content';
+import { useLang } from '../../i18n/LanguageContext';
+import Logo from '../ui/Logo';
 
+// Replace these with your real profile URLs before publishing.
 const social = [
   { label: 'in', href: 'https://www.linkedin.com', name: 'LinkedIn' },
   { label: 'f', href: 'https://www.facebook.com', name: 'Facebook' },
@@ -9,37 +12,34 @@ const social = [
 ];
 
 export default function Footer() {
+  const { t } = useLang();
+  const f = t.footer;
   return (
     <footer>
       <div className="fg">
         <div>
           <Logo color="#fff" />
-          <p>I always make my clients happy by providing as many choices as possible.</p>
+          <p>{f.tagline}</p>
         </div>
         <div>
-          <h4>Pages</h4>
-          <Link to="/">Home</Link>
-          <Link to="/services">Services</Link>
-          <Link to="/portfolio">Portfolio</Link>
-          <Link to="/about">About</Link>
-          <Link to="/contact">Contact</Link>
+          <h4>{f.pages}</h4>
+          {navLinks.map((l) => <Link key={l.to} to={l.to}>{t.nav[l.key]}</Link>)}
         </div>
         <div>
-          <h4>Resources</h4>
-          <Link to="/portfolio">Events</Link>
-          <Link to="/services">Promo</Link>
-          <Link to="/contact">Req Demo</Link>
+          <h4>{f.work}</h4>
+          <Link to="/portfolio">{f.caseStudies}</Link>
+          <Link to="/services">{f.pricing}</Link>
+          <a href="/resume.pdf" target="_blank" rel="noreferrer">{f.resume}</a>
         </div>
         <div>
-          <h4>Support</h4>
-          <Link to="/contact">Account</Link>
-          <Link to="/contact">Support Center</Link>
-          <Link to="/contact">Feedback</Link>
-          <Link to="/contact">Contact Me</Link>
+          <h4>{f.touch}</h4>
+          <Link to="/contact">{f.start}</Link>
+          <Link to="/contact">{f.call}</Link>
+          <Link to="/contact">{f.contactMe}</Link>
         </div>
         <div>
-          <h4>Contact Info</h4>
-          <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
+          <h4>{f.info}</h4>
+          <a href={`mailto:${contactEmail}`} dir="ltr">{contactEmail}</a>
           <div className="sc">
             {social.map((s) => (
               <a key={s.label} href={s.href} target="_blank" rel="noreferrer" aria-label={s.name} style={{ margin: 0, opacity: 1 }}>
@@ -49,7 +49,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className="cp">Copyright © 2026 Codey. All rights reserved.</div>
+      <div className="cp">{f.rights}</div>
     </footer>
   );
 }

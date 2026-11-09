@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { navLinks } from '../../data/content';
+import { useLang } from '../../i18n/LanguageContext';
 import Logo from '../ui/Logo';
 
 type Theme = 'light' | 'dark';
@@ -19,6 +20,7 @@ function getInitialTheme(): Theme {
 }
 
 export default function Navbar() {
+  const { t, toggleLang } = useLang();
   const [open, setOpen] = useState(false);
   const [theme, setTheme] = useState<Theme>(getInitialTheme);
   const { pathname } = useLocation();
@@ -40,31 +42,38 @@ export default function Navbar() {
     }
   }, [theme]);
 
+  const themeLabel = theme === 'dark' ? t.nav.toLight : t.nav.toDark;
+
   return (
-    <nav id="nav" className={open ? 'open' : ''} aria-label="Main navigation">
+    <nav id="nav" className={open ? 'open' : ''} aria-label={t.nav.main}>
       <Logo />
       <div className="links">
         {navLinks.map((l) => (
           <NavLink key={l.to} to={l.to} end className={({ isActive }) => (isActive ? 'on' : '')}>
-            {l.label}
+            {t.nav[l.key]}
           </NavLink>
         ))}
       </div>
       <div className="cta">
-        <Link className="btn s" to="/contact">Hire Me</Link>
-        <a className="btn s o" href="/resume.pdf" target="_blank" rel="noreferrer">Resume</a>
+        <Link className="btn s" to="/contact">{t.nav.hire}</Link>
+        <a className="btn s o" href="/resume.pdf" target="_blank" rel="noreferrer">{t.nav.resume}</a>
       </div>
-      <button
-        className="theme-toggle"
-        type="button"
-        onClick={() => setTheme((current) => current === 'dark' ? 'light' : 'dark')}
-        aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-        aria-pressed={theme === 'dark'}
-        title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-      >
-        <span aria-hidden="true">{theme === 'dark' ? '☀' : '☾'}</span>
-      </button>
-      <button className="burger" type="button" aria-label="Menu" aria-expanded={open} onClick={() => setOpen((o) => !o)}>
+      <div className="nav-tools">
+        <button className="lang-toggle" type="button" onClick={toggleLang} aria-label={t.nav.langAria} title={t.nav.langAria}>
+          {t.nav.langLabel}
+        </button>
+        <button
+          className="theme-toggle"
+          type="button"
+          onClick={() => setTheme((current) => current === 'dark' ? 'light' : 'dark')}
+          aria-label={themeLabel}
+          aria-pressed={theme === 'dark'}
+          title={themeLabel}
+        >
+          <span aria-hidden="true">{theme === 'dark' ? '☀' : '☾'}</span>
+        </button>
+      </div>
+      <button className="burger" type="button" aria-label={t.nav.menu} aria-expanded={open} onClick={() => setOpen((o) => !o)}>
         <i></i><i></i><i></i>
       </button>
     </nav>

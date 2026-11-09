@@ -1,5 +1,6 @@
 import type { CSSProperties } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useLang } from '../../i18n/LanguageContext';
 import Reveal from '../ui/Reveal';
 
 const pins = [
@@ -12,6 +13,8 @@ const pins = [
 
 export default function WorldMap() {
   const navigate = useNavigate();
+  const { t } = useLang();
+  const m = t.map;
   const toContact = () => navigate('/contact');
   return (
     <section className="map">
@@ -25,12 +28,12 @@ export default function WorldMap() {
         <path d="M30 2c30 20 20 40-6 50S4 80 36 118" />
       </svg>
       <Reveal className="mapt">
-        <h2>Code, Coffee, Deadlines, What Else Do You Need?</h2>
-        <p>Explore my services across more than 20 technologies, find the stack that fits and book a call now.</p>
+        <h2>{m.title}</h2>
+        <p>{m.text}</p>
         <div className="search">
-          <div className="f" onClick={toContact}><em>⌖</em><div><b>Service ▾</b>Choose Service</div></div>
-          <div className="f" onClick={toContact}><em>▦</em><div><b>Date ▾</b>Add Date</div></div>
-          <button className="go" aria-label="Search" onClick={toContact}>⌕</button>
+          <button type="button" className="f" onClick={toContact}><em>⌖</em><div><b>{m.service}</b>{m.serviceHint}</div></button>
+          <button type="button" className="f" onClick={toContact}><em>▦</em><div><b>{m.timeline}</b>{m.timelineHint}</div></button>
+          <button type="button" className="go" aria-label={m.go} onClick={toContact}><span className="flip">→</span></button>
         </div>
       </Reveal>
     </section>
